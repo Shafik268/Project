@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        🌍 Disaster Recovery Assistant
+    </div>
+
+    <ul class="nav-links">
+
+        <li><a href="/">Home</a></li>
+        <li><a href="/report">Report</a></li>
+        <li><a href="/dashboard">Dashboard</a></li>
+        <li><a href="/resources">Resources</a></li>
+        <li><a href="/shelters">Shelters</a></li>
+
+    </ul>
+
+</nav>
+
+<!-- ================= HEADER ================= -->
+
+<section class="dashboard-header">
+
+<h1>Admin Dashboard</h1>
+
+<p>
+
+Monitor emergency reports, shelters and available resources.
+
+</p>
+
+</section>
+
+<!-- ================= STATISTICS ================= -->
+
+<section class="stats-container">
+
+<div class="stat-card">
+
+<h2>Total Reports</h2>
+
+<h1>0</h1>
+
+</div>
+
+<div class="stat-card">
+
+<h2>Active Emergencies</h2>
+
+<h1>0</h1>
+
+</div>
+
+<div class="stat-card">
+
+<h2>Resources</h2>
+
+<h1>0</h1>
+
+</div>
+
+<div class="stat-card">
+
+<h2>Shelters</h2>
+
+<h1>0</h1>
+
+</div>
+
+</section>
+
+<!-- ================= RECENT REPORTS ================= -->
+
+<section class="table-section">
+
+<h2>Recent Emergency Reports</h2>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>ID</th>
+
+<th>Name</th>
+
+<th>Disaster</th>
+
+<th>Location</th>
+
+<th>Urgency</th>
+
+<th>Status</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td>1</td>
+
+<td>Sample User</td>
+
+<td>Flood</td>
+
+<td>Ahmedabad</td>
+
+<td>High</td>
+
+<td><span class="status pending">Pending</span></td>
+
+</tr>
+
+<tr>
+
+<td>2</td>
+
+<td>Sample User</td>
+
+<td>Fire</td>
+
+<td>Surat</td>
+
+<td>Critical</td>
+
+<td><span class="status active">Active</span></td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+<p>
+
+© 2026 Disaster Recovery Assistant
+
+</p>
+
+</footer>
+
+</body>
+
+</html>
