@@ -2,179 +2,178 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Report Emergency</title>
 
-    <link rel="stylesheet"
-          href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-          rel="stylesheet">
-
+        rel="stylesheet">
 </head>
 
 <body>
 
-<!-- ================= NAVBAR ================= -->
+    <!-- ================= NAVBAR ================= -->
 
-<nav class="navbar">
+    <nav class="navbar">
 
-    <div class="logo">
-        🌍 Disaster Recovery Assistant
-    </div>
+        <div class="logo">
+            🌍 Disaster Recovery Assistant
+        </div>
 
-    <ul class="nav-links">
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/report">Report</a></li>
+            <li><a href="/dashboard">Dashboard</a></li>
+            <li><a href="/resources">Resources</a></li>
+            <li><a href="/shelters">Shelters</a></li>
+        </ul>
 
-        <li><a href="/">Home</a></li>
+    </nav>
 
-        <li><a href="/report">Report</a></li>
+    <!-- ================= REPORT FORM ================= -->
 
-        <li><a href="/dashboard">Dashboard</a></li>
+    <section class="report-section">
 
-        <li><a href="/resources">Resources</a></li>
+        <h1>Emergency Report Form</h1>
 
-        <li><a href="/shelters">Shelters</a></li>
+        <p>
+            Please provide accurate information so emergency response
+            teams can act quickly.
+        </p>
 
-    </ul>
+        <form action="/submit-report" method="POST">
 
-</nav>
+            <!-- Name -->
 
+            <div class="form-group">
 
+                <label for="name">Full Name</label>
 
-<!-- ================= FORM SECTION ================= -->
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Enter your full name"
+                    required>
 
-<section class="report-section">
+            </div>
 
-<h1>Emergency Report Form</h1>
+            <!-- Contact -->
 
-<p>
+            <div class="form-group">
 
-Please provide accurate information so emergency
-response teams can act quickly.
+                <label for="contact">Contact Number</label>
 
-</p>
+                <input
+                    type="tel"
+                    id="contact"
+                    name="contact"
+                    placeholder="Enter your contact number"
+                    required>
 
-<form>
+            </div>
 
-<div class="form-group">
+            <!-- Disaster Type -->
 
-<label>Name</label>
+            <div class="form-group">
 
-<input
-type="text"
-placeholder="Enter your full name"
-required>
+                <label for="disaster">Disaster Type</label>
 
-</div>
+                <select
+                    id="disaster"
+                    name="disaster"
+                    required>
 
+                    <option value="">Select Disaster</option>
+                    <option value="Flood">Flood</option>
+                    <option value="Fire">Fire</option>
+                    <option value="Earthquake">Earthquake</option>
+                    <option value="Cyclone">Cyclone</option>
+                    <option value="Landslide">Landslide</option>
+                    <option value="Other">Other</option>
 
-<div class="form-group">
+                </select>
 
-<label>Contact Number</label>
+            </div>
 
-<input
-type="tel"
-placeholder="Enter your contact number"
-required>
+            <!-- Location -->
 
-</div>
+            <div class="form-group">
 
+                <label for="location">Location</label>
 
-<div class="form-group">
+                <input
+                    type="text"
+                    id="location"
+                    name="location"
+                    placeholder="Enter the disaster location"
+                    required>
 
-<label>Disaster Type</label>
+            </div>
 
-<select>
+            <!-- Urgency -->
 
-<option>Select Disaster</option>
+            <div class="form-group">
 
-<option>Flood</option>
+                <label for="urgency">Urgency Level</label>
 
-<option>Fire</option>
+                <select
+                    id="urgency"
+                    name="urgency"
+                    required>
 
-<option>Earthquake</option>
+                    <option value="">Select Urgency</option>
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+                    <option value="Critical">Critical</option>
 
-<option>Cyclone</option>
+                </select>
 
-<option>Landslide</option>
+            </div>
 
-<option>Other</option>
+            <!-- Description -->
 
-</select>
+            <div class="form-group">
 
-</div>
+                <label for="description">Description</label>
 
+                <textarea
+                    id="description"
+                    name="description"
+                    rows="6"
+                    placeholder="Describe the emergency in detail..."
+                    required></textarea>
 
-<div class="form-group">
+            </div>
 
-<label>Location</label>
+            <!-- Submit -->
 
-<input
-type="text"
-placeholder="Enter location"
-required>
+            <button
+                type="submit"
+                class="submit-btn">
 
-</div>
+                🚨 Submit Emergency Report
 
+            </button>
 
-<div class="form-group">
+        </form>
 
-<label>Urgency</label>
+    </section>
 
-<select>
+    <!-- ================= FOOTER ================= -->
 
-<option>Low</option>
+    <footer>
 
-<option>Medium</option>
+        <p>
 
-<option>High</option>
+            © 2026 Disaster Recovery Assistant | Odoo Hackathon Project
 
-<option>Critical</option>
+        </p>
 
-</select>
-
-</div>
-
-
-<div class="form-group">
-
-<label>Description</label>
-
-<textarea
-rows="6"
-placeholder="Describe the emergency"></textarea>
-
-</div>
-
-
-<button class="submit-btn">
-
-Submit Report
-
-</button>
-
-</form>
-
-</section>
-
-
-
-<!-- ================= FOOTER ================= -->
-
-<footer>
-
-<p>
-
-© 2026 Disaster Recovery Assistant
-
-</p>
-
-</footer>
+    </footer>
 
 </body>
 
