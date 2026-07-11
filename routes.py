@@ -1,6 +1,6 @@
 from flask import app, render_template, request, redirect
 
-from Project.integration import dashboard_data
+from integration import dashboard_data
 
 
 def register_routes(app):
