@@ -7,7 +7,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Dashboard</title>
+    <title>Admin Dashboard</title>
 
     <link rel="stylesheet"
           href="{{ url_for('static', filename='css/style.css') }}">
@@ -19,7 +19,7 @@
 
 <body>
 
-<!-- ================= NAVBAR ================= -->
+<!-- ================= NAVIGATION ================= -->
 
 <nav class="navbar">
 
@@ -43,13 +43,11 @@
 
 <section class="dashboard-header">
 
-<h1>Admin Dashboard</h1>
+    <h1>Admin Dashboard</h1>
 
-<p>
-
-Monitor emergency reports, shelters and available resources.
-
-</p>
+    <p>
+        Monitor emergency reports, resources and shelters.
+    </p>
 
 </section>
 
@@ -57,37 +55,37 @@ Monitor emergency reports, shelters and available resources.
 
 <section class="stats-container">
 
-<div class="stat-card">
+    <div class="stat-card">
 
-<h2>Total Reports</h2>
+        <h2>Total Reports</h2>
 
-<h1>0</h1>
+        <h1>{{ total_reports }}</h1>
 
-</div>
+    </div>
 
-<div class="stat-card">
+    <div class="stat-card">
 
-<h2>Active Emergencies</h2>
+        <h2>Active Emergencies</h2>
 
-<h1>0</h1>
+        <h1>{{ total_reports }}</h1>
 
-</div>
+    </div>
 
-<div class="stat-card">
+    <div class="stat-card">
 
-<h2>Resources</h2>
+        <h2>Resources</h2>
 
-<h1>0</h1>
+        <h1>{{ total_resources }}</h1>
 
-</div>
+    </div>
 
-<div class="stat-card">
+    <div class="stat-card">
 
-<h2>Shelters</h2>
+        <h2>Shelters</h2>
 
-<h1>0</h1>
+        <h1>{{ total_shelters }}</h1>
 
-</div>
+    </div>
 
 </section>
 
@@ -95,67 +93,79 @@ Monitor emergency reports, shelters and available resources.
 
 <section class="table-section">
 
-<h2>Recent Emergency Reports</h2>
+    <h2>Recent Emergency Reports</h2>
 
-<table>
+    <table>
 
-<thead>
+        <thead>
 
-<tr>
+            <tr>
 
-<th>ID</th>
+                <th>ID</th>
 
-<th>Name</th>
+                <th>Name</th>
 
-<th>Disaster</th>
+                <th>Disaster</th>
 
-<th>Location</th>
+                <th>Location</th>
 
-<th>Urgency</th>
+                <th>Urgency</th>
 
-<th>Status</th>
+                <th>Status</th>
 
-</tr>
+            </tr>
 
-</thead>
+        </thead>
 
-<tbody>
+        <tbody>
 
-<tr>
+        {% if reports %}
 
-<td>1</td>
+            {% for report in reports %}
 
-<td>Sample User</td>
+            <tr>
 
-<td>Flood</td>
+                <td>{{ report[0] }}</td>
 
-<td>Ahmedabad</td>
+                <td>{{ report[1] }}</td>
 
-<td>High</td>
+                <td>{{ report[2] }}</td>
 
-<td><span class="status pending">Pending</span></td>
+                <td>{{ report[3] }}</td>
 
-</tr>
+                <td>{{ report[4] }}</td>
 
-<tr>
+                <td>
 
-<td>2</td>
+                    <span class="status pending">
 
-<td>Sample User</td>
+                        Pending
 
-<td>Fire</td>
+                    </span>
 
-<td>Surat</td>
+                </td>
 
-<td>Critical</td>
+            </tr>
 
-<td><span class="status active">Active</span></td>
+            {% endfor %}
 
-</tr>
+        {% else %}
 
-</tbody>
+            <tr>
 
-</table>
+                <td colspan="6">
+
+                    No emergency reports found.
+
+                </td>
+
+            </tr>
+
+        {% endif %}
+
+        </tbody>
+
+    </table>
 
 </section>
 
@@ -163,11 +173,11 @@ Monitor emergency reports, shelters and available resources.
 
 <footer>
 
-<p>
+    <p>
 
-© 2026 Disaster Recovery Assistant
+        © 2026 Disaster Recovery Assistant
 
-</p>
+    </p>
 
 </footer>
 
