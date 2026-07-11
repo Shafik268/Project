@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Report Emergency</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        🌍 Disaster Recovery Assistant
+    </div>
+
+    <ul class="nav-links">
+
+        <li><a href="/">Home</a></li>
+
+        <li><a href="/report">Report</a></li>
+
+        <li><a href="/dashboard">Dashboard</a></li>
+
+        <li><a href="/resources">Resources</a></li>
+
+        <li><a href="/shelters">Shelters</a></li>
+
+    </ul>
+
+</nav>
+
+
+
+<!-- ================= FORM SECTION ================= -->
+
+<section class="report-section">
+
+<h1>Emergency Report Form</h1>
+
+<p>
+
+Please provide accurate information so emergency
+response teams can act quickly.
+
+</p>
+
+<form>
+
+<div class="form-group">
+
+<label>Name</label>
+
+<input
+type="text"
+placeholder="Enter your full name"
+required>
+
+</div>
+
+
+<div class="form-group">
+
+<label>Contact Number</label>
+
+<input
+type="tel"
+placeholder="Enter your contact number"
+required>
+
+</div>
+
+
+<div class="form-group">
+
+<label>Disaster Type</label>
+
+<select>
+
+<option>Select Disaster</option>
+
+<option>Flood</option>
+
+<option>Fire</option>
+
+<option>Earthquake</option>
+
+<option>Cyclone</option>
+
+<option>Landslide</option>
+
+<option>Other</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group">
+
+<label>Location</label>
+
+<input
+type="text"
+placeholder="Enter location"
+required>
+
+</div>
+
+
+<div class="form-group">
+
+<label>Urgency</label>
+
+<select>
+
+<option>Low</option>
+
+<option>Medium</option>
+
+<option>High</option>
+
+<option>Critical</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group">
+
+<label>Description</label>
+
+<textarea
+rows="6"
+placeholder="Describe the emergency"></textarea>
+
+</div>
+
+
+<button class="submit-btn">
+
+Submit Report
+
+</button>
+
+</form>
+
+</section>
+
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+<p>
+
+© 2026 Disaster Recovery Assistant
+
+</p>
+
+</footer>
+
+</body>
+
+</html>
