@@ -1,52 +1,57 @@
-from flask import app, render_template, request, redirect
-
-from Project.integration import dashboard_data
+from flask import render_template, request, redirect
 
 
 def register_routes(app):
 
+    # -----------------------------
+    # HOME PAGE
+    # -----------------------------
     @app.route("/")
     def home():
         return render_template("index.html")
 
-
+    # -----------------------------
+    # REPORT PAGE
+    # -----------------------------
     @app.route("/report")
     def report():
         return render_template("report.html")
 
-
+    # -----------------------------
+    # DASHBOARD
+    # -----------------------------
     @app.route("/dashboard")
     def dashboard():
 
         from integration import dashboard_data
 
-    data = dashboard_data()
+        data = dashboard_data()
 
-    return render_template(
+        return render_template(
+            "dashboard.html",
+            total_reports=data["total_reports"],
+            total_resources=data["resources"],
+            total_shelters=data["shelters"],
+            reports=data["reports"]
+        )
 
-        "dashboard.html",
-
-        total_reports=data["total_reports"],
-
-        total_resources=data["resources"],
-
-        total_shelters=data["shelters"],
-
-        reports=data["reports"]
-
-    )
-
-
+    # -----------------------------
+    # RESOURCES PAGE
+    # -----------------------------
     @app.route("/resources")
     def resources():
         return render_template("resources.html")
 
-
+    # -----------------------------
+    # SHELTERS PAGE
+    # -----------------------------
     @app.route("/shelters")
     def shelters():
         return render_template("shelters.html")
 
-
+    # -----------------------------
+    # SUBMIT REPORT
+    # -----------------------------
     @app.route("/submit-report", methods=["POST"])
     def submit_report():
 

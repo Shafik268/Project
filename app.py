@@ -7,7 +7,8 @@ app = Flask(__name__)
 app.config["SECRET_KEY"] = SECRET_KEY
 app.config["DEBUG"] = DEBUG
 
+# Register all routes
 register_routes(app)
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=DEBUG)
