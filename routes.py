@@ -1,4 +1,6 @@
-from flask import render_template, request, redirect
+from flask import app, render_template, request, redirect
+
+from Project.integration import dashboard_data
 
 
 def register_routes(app):
@@ -15,7 +17,24 @@ def register_routes(app):
 
     @app.route("/dashboard")
     def dashboard():
-        return render_template("dashboard.html")
+
+        from integration import dashboard_data
+
+    data = dashboard_data()
+
+    return render_template(
+
+        "dashboard.html",
+
+        total_reports=data["total_reports"],
+
+        total_resources=data["resources"],
+
+        total_shelters=data["shelters"],
+
+        reports=data["reports"]
+
+    )
 
 
     @app.route("/resources")

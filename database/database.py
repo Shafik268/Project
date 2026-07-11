@@ -1,87 +1,78 @@
 import sqlite3
-import os
-import sys
-
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from config import DATABASE_PATH
 
 
+# -----------------------------
+# DATABASE CONNECTION
+# -----------------------------
 def create_connection():
     return sqlite3.connect(DATABASE_PATH)
 
 
+# -----------------------------
+# CREATE TABLES
+# -----------------------------
 def create_tables():
 
     conn = create_connection()
-
     cursor = conn.cursor()
 
+    # Emergency Reports Table
     cursor.execute("""
-    CREATE TABLE IF NOT EXISTS reports(
+        CREATE TABLE IF NOT EXISTS reports (
 
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
 
-        name TEXT NOT NULL,
+            name TEXT NOT NULL,
 
-        contact TEXT NOT NULL,
+            contact TEXT NOT NULL,
 
-        disaster TEXT NOT NULL,
+            disaster TEXT NOT NULL,
 
-        location TEXT NOT NULL,
+            location TEXT NOT NULL,
 
-        urgency TEXT NOT NULL,
+            urgency TEXT NOT NULL,
 
-        description TEXT,
+            description TEXT NOT NULL
 
-        status TEXT DEFAULT 'Pending',
-
-        timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
-
-    )
+        )
     """)
 
+    # Resources Table
     cursor.execute("""
-    CREATE TABLE IF NOT EXISTS resources(
+        CREATE TABLE IF NOT EXISTS resources (
 
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
 
-        resource_name TEXT NOT NULL,
+            resource_name TEXT NOT NULL,
 
-        quantity INTEGER,
+            quantity INTEGER NOT NULL
 
-        category TEXT
-
-    )
+        )
     """)
 
+    # Shelters Table
     cursor.execute("""
-    CREATE TABLE IF NOT EXISTS shelters(
+        CREATE TABLE IF NOT EXISTS shelters (
 
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
 
-        name TEXT,
+            name TEXT NOT NULL,
 
-        address TEXT,
+            address TEXT NOT NULL,
 
-        capacity INTEGER,
+            capacity INTEGER NOT NULL
 
-        available_beds INTEGER
-
-    )
+        )
     """)
 
     conn.commit()
-
     conn.close()
 
 
-if __name__ == "__main__":
-
-    create_tables()
-
-    print("Database Created Successfully")
-
-
+# -----------------------------
+# INSERT REPORT
+# -----------------------------
 def insert_report(
     name,
     contact,
@@ -90,9 +81,10 @@ def insert_report(
     urgency,
     description
 ):
-    """Insert a report into the reports table."""
+
     conn = create_connection()
     cursor = conn.cursor()
+
     cursor.execute("""
         INSERT INTO reports
         (
@@ -112,5 +104,85 @@ def insert_report(
         urgency,
         description
     ))
+
     conn.commit()
     conn.close()
+
+
+# -----------------------------
+# DASHBOARD FUNCTIONS
+# -----------------------------
+def get_total_reports():
+
+    conn = create_connection()
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT COUNT(*) FROM reports")
+
+    total = cursor.fetchone()[0]
+
+    conn.close()
+
+    return total
+
+
+def get_total_resources():
+
+    conn = create_connection()
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT COUNT(*) FROM resources")
+
+    total = cursor.fetchone()[0]
+
+    conn.close()
+
+    return total
+
+
+def get_total_shelters():
+
+    conn = create_connection()
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT COUNT(*) FROM shelters")
+
+    total = cursor.fetchone()[0]
+
+    conn.close()
+
+    return total
+
+
+def get_recent_reports():
+
+    conn = create_connection()
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        SELECT
+            id,
+            name,
+            disaster,
+            location,
+            urgency
+        FROM reports
+        ORDER BY id DESC
+        LIMIT 5
+    """)
+
+    reports = cursor.fetchall()
+
+    conn.close()
+
+    return reports
+
+
+# -----------------------------
+# INITIALIZE DATABASE
+# -----------------------------
+if __name__ == "__main__":
+
+    create_tables()
+
+    print("Database initialized successfully!")
