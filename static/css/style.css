@@ -322,3 +322,119 @@ flex-direction:column;
 }
 
 }
+
+/* =============================
+
+REPORT PAGE
+
+============================= */
+
+.report-section{
+
+width:60%;
+
+margin:50px auto;
+
+background:white;
+
+padding:40px;
+
+border-radius:15px;
+
+box-shadow:0 5px 15px rgba(0,0,0,.1);
+
+}
+
+.report-section h1{
+
+text-align:center;
+
+margin-bottom:15px;
+
+color:#1E3A8A;
+
+}
+
+.report-section p{
+
+text-align:center;
+
+margin-bottom:35px;
+
+color:#555;
+
+}
+
+.form-group{
+
+display:flex;
+
+flex-direction:column;
+
+margin-bottom:20px;
+
+}
+
+.form-group label{
+
+font-weight:600;
+
+margin-bottom:8px;
+
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+
+padding:14px;
+
+border:1px solid #ccc;
+
+border-radius:8px;
+
+font-size:15px;
+
+outline:none;
+
+transition:.3s;
+
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+
+border:2px solid #2563EB;
+
+}
+
+.submit-btn{
+
+width:100%;
+
+padding:16px;
+
+background:#2563EB;
+
+color:white;
+
+font-size:18px;
+
+border:none;
+
+border-radius:10px;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.submit-btn:hover{
+
+background:#1D4ED8;
+
+transform:scale(1.02);
+
+}
