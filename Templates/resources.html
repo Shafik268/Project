@@ -7,7 +7,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Resources Management</title>
+    <title>Resource Management</title>
 
     <link rel="stylesheet"
           href="{{ url_for('static', filename='css/style.css') }}">
@@ -19,6 +19,8 @@
 
 <body>
 
+<!-- ===================== NAVBAR ===================== -->
+
 <nav class="navbar">
 
     <div class="logo">
@@ -28,175 +30,150 @@
     <ul class="nav-links">
 
         <li><a href="/">Home</a></li>
+
         <li><a href="/report">Report</a></li>
+
         <li><a href="/dashboard">Dashboard</a></li>
-        <li><a href="/resources">Resources</a></li>
+
+        <li><a href="/resources" class="active">Resources</a></li>
+
         <li><a href="/shelters">Shelters</a></li>
 
     </ul>
 
 </nav>
 
+<!-- ===================== PAGE HEADER ===================== -->
 
-<section class="resource-header">
+<section class="page-header">
 
-<h1>Resource Management</h1>
+    <h1>Resource Management</h1>
 
-<p>
+    <p>
 
-Manage food, medicines, water and other emergency supplies.
+        Manage emergency relief resources available for disaster response.
 
-</p>
-
-</section>
-
-
-<section class="resource-form">
-
-<h2>Add New Resource</h2>
-
-<form>
-
-<div class="form-group">
-
-<label>Resource Name</label>
-
-<input
-type="text"
-placeholder="Enter resource name">
-
-</div>
-
-<div class="form-group">
-
-<label>Category</label>
-
-<select>
-
-<option>Food</option>
-
-<option>Water</option>
-
-<option>Medicine</option>
-
-<option>Clothing</option>
-
-<option>Medical Equipment</option>
-
-<option>Other</option>
-
-</select>
-
-</div>
-
-<div class="form-group">
-
-<label>Quantity</label>
-
-<input
-type="number"
-placeholder="Enter quantity">
-
-</div>
-
-<button class="submit-btn">
-
-Add Resource
-
-</button>
-
-</form>
+    </p>
 
 </section>
 
+<!-- ===================== RESOURCE FORM ===================== -->
 
+<section class="resource-form-section">
 
-<section class="resource-table">
+    <div class="resource-card">
 
-<h2>Available Resources</h2>
+        <h2>Add New Resource</h2>
 
-<table>
+        <form action="/add-resource" method="POST">
 
-<thead>
+            <div class="form-group">
 
-<tr>
+                <label>Resource Name</label>
 
-<th>ID</th>
+                <input
+                    type="text"
+                    name="resource_name"
+                    placeholder="Example: Food Packets"
+                    required>
 
-<th>Resource</th>
+            </div>
 
-<th>Category</th>
+            <div class="form-group">
 
-<th>Quantity</th>
+                <label>Quantity</label>
 
-<th>Status</th>
+                <input
+                    type="number"
+                    name="quantity"
+                    placeholder="Example: 250"
+                    required>
 
-<th>Action</th>
+            </div>
 
-</tr>
+            <button
+                type="submit"
+                class="btn-primary">
 
-</thead>
+                Add Resource
 
-<tbody>
+            </button>
 
-<tr>
+        </form>
 
-<td>1</td>
-
-<td>Drinking Water</td>
-
-<td>Water</td>
-
-<td>250</td>
-
-<td><span class="available">Available</span></td>
-
-<td>
-
-<button class="edit-btn">Edit</button>
-
-<button class="delete-btn">Delete</button>
-
-</td>
-
-</tr>
-
-<tr>
-
-<td>2</td>
-
-<td>Medical Kit</td>
-
-<td>Medicine</td>
-
-<td>120</td>
-
-<td><span class="available">Available</span></td>
-
-<td>
-
-<button class="edit-btn">Edit</button>
-
-<button class="delete-btn">Delete</button>
-
-</td>
-
-</tr>
-
-</tbody>
-
-</table>
+    </div>
 
 </section>
 
+<!-- ===================== RESOURCE TABLE ===================== -->
+
+<section class="table-section">
+
+    <h2>Available Resources</h2>
+
+    <table>
+
+        <thead>
+
+            <tr>
+
+                <th>ID</th>
+
+                <th>Resource Name</th>
+
+                <th>Quantity</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+        {% if resources %}
+
+            {% for resource in resources %}
+
+            <tr>
+
+                <td>{{ resource[0] }}</td>
+
+                <td>{{ resource[1] }}</td>
+
+                <td>{{ resource[2] }}</td>
+
+            </tr>
+
+            {% endfor %}
+
+        {% else %}
+
+            <tr>
+
+                <td colspan="3">
+
+                    No resources available.
+
+                </td>
+
+            </tr>
+
+        {% endif %}
+
+        </tbody>
+
+    </table>
+
+</section>
+
+<!-- ===================== FOOTER ===================== -->
 
 <footer>
 
-<p>
+    <p>
 
-© 2026 Disaster Recovery Assistant
+        © 2026 Disaster Recovery Assistant | Resource Management System
 
-</p>
+    </p>
 
 </footer>
 
