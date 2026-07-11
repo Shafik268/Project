@@ -438,3 +438,158 @@ background:#1D4ED8;
 transform:scale(1.02);
 
 }
+/* =============================
+
+DASHBOARD
+
+============================= */
+
+.dashboard-header{
+
+text-align:center;
+
+padding:50px 20px;
+
+}
+
+.dashboard-header h1{
+
+font-size:40px;
+
+color:#1E3A8A;
+
+margin-bottom:10px;
+
+}
+
+.dashboard-header p{
+
+font-size:18px;
+
+color:#555;
+
+}
+
+.stats-container{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+gap:25px;
+
+padding:40px 8%;
+
+}
+
+.stat-card{
+
+background:white;
+
+padding:30px;
+
+border-radius:15px;
+
+text-align:center;
+
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+transition:.3s;
+
+}
+
+.stat-card:hover{
+
+transform:translateY(-8px);
+
+}
+
+.stat-card h2{
+
+font-size:18px;
+
+color:#555;
+
+margin-bottom:15px;
+
+}
+
+.stat-card h1{
+
+font-size:40px;
+
+color:#2563EB;
+
+}
+
+.table-section{
+
+padding:50px 8%;
+
+}
+
+.table-section h2{
+
+margin-bottom:20px;
+
+}
+
+table{
+
+width:100%;
+
+border-collapse:collapse;
+
+background:white;
+
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+}
+
+table th{
+
+background:#2563EB;
+
+color:white;
+
+padding:15px;
+
+}
+
+table td{
+
+padding:15px;
+
+text-align:center;
+
+border-bottom:1px solid #ddd;
+
+}
+
+.status{
+
+padding:8px 16px;
+
+border-radius:20px;
+
+font-size:14px;
+
+font-weight:600;
+
+}
+
+.pending{
+
+background:#FEF3C7;
+
+color:#B45309;
+
+}
+
+.active{
+
+background:#DCFCE7;
+
+color:#15803D;
+
+}
