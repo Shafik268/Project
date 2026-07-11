@@ -186,3 +186,86 @@ if __name__ == "__main__":
     create_tables()
 
     print("Database initialized successfully!")
+
+    # -----------------------------
+# INSERT RESOURCE
+# -----------------------------
+def insert_resource(resource_name, quantity):
+
+    conn = create_connection()
+
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        INSERT INTO resources
+        (
+            resource_name,
+            quantity
+        )
+
+        VALUES (?, ?)
+    """, (
+
+        resource_name,
+        quantity
+
+    ))
+
+    conn.commit()
+
+    conn.close()
+
+    # -----------------------------
+# GET ALL RESOURCES
+# -----------------------------
+def get_all_resources():
+
+    conn = create_connection()
+
+    cursor = conn.cursor()
+
+    cursor.execute("""
+
+        SELECT
+
+            id,
+
+            resource_name,
+
+            quantity
+
+        FROM resources
+
+        ORDER BY id DESC
+
+    """)
+
+    resources = cursor.fetchall()
+
+    conn.close()
+
+    return resources
+
+# -----------------------------
+# TOTAL RESOURCE QUANTITY
+# -----------------------------
+def get_total_resource_quantity():
+
+    conn = create_connection()
+
+    cursor = conn.cursor()
+
+    cursor.execute("""
+
+        SELECT
+            COALESCE(SUM(quantity),0)
+
+        FROM resources
+
+    """)
+
+    total = cursor.fetchone()[0]
+
+    conn.close()
+
+    return total
