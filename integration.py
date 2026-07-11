@@ -1,49 +1,20 @@
-"""
-Integration Layer
-
-This file will contain all functions
-used by Flask to communicate with SQLite.
-"""
-
-# -----------------------------
-# REPORTS
-# -----------------------------
-
-def save_report(data):
-    pass
+from database.database import insert_report
 
 
-def get_reports():
-    return []
+def save_report(
+    name,
+    contact,
+   disaster,
+   location,
+   urgency,
+   description
+):
 
-
-# -----------------------------
-# RESOURCES
-# -----------------------------
-
-def get_resources():
-    return []
-
-
-def add_resource(data):
-    pass
-
-
-def update_resource(resource_id, quantity):
-    pass
-
-
-def delete_resource(resource_id):
-    pass
-
-
-# -----------------------------
-# SHELTERS
-# -----------------------------
-
-def get_shelters():
-    return []
-
-
-def add_shelter(data):
-    pass
+    insert_report(
+        name,
+        contact,
+        disaster,
+        location,
+        urgency,
+        description
+    )

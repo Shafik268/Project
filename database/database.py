@@ -80,3 +80,37 @@ if __name__ == "__main__":
     create_tables()
 
     print("Database Created Successfully")
+
+
+def insert_report(
+    name,
+    contact,
+    disaster,
+    location,
+    urgency,
+    description
+):
+    """Insert a report into the reports table."""
+    conn = create_connection()
+    cursor = conn.cursor()
+    cursor.execute("""
+        INSERT INTO reports
+        (
+            name,
+            contact,
+            disaster,
+            location,
+            urgency,
+            description
+        )
+        VALUES (?, ?, ?, ?, ?, ?)
+    """, (
+        name,
+        contact,
+        disaster,
+        location,
+        urgency,
+        description
+    ))
+    conn.commit()
+    conn.close()
