@@ -1,10 +1,4 @@
-<<<<<<< HEAD
 from flask import render_template, request, redirect
-=======
-from flask import app, render_template, request, redirect
-
-from integration import dashboard_data
->>>>>>> 1d48700ee3650180e4e6b725fac7cbf69b8b6edd
 
 
 def register_routes(app):
