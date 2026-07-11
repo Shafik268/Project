@@ -593,158 +593,341 @@ background:#DCFCE7;
 color:#15803D;
 
 }
-/* =====================================
-
-RESOURCE MANAGEMENT
-
-===================================== */
-
-.resource-header{
-
-text-align:center;
-
-padding:50px 20px;
-
+/* ==========================================================================
+   1. Core Variables & Reset
+   ========================================================================== */
+:root {
+    --bg-primary: #f4f7f6;
+    --bg-card: #ffffff;
+    --text-main: #2d3748;
+    --text-muted: #718096;
+    
+    /* Disaster Response Color Palette */
+    --primary: #0284c7;       /* Deep Sky Blue */
+    --primary-hover: #0369a1;
+    --success: #16a34a;       /* Available / Safe Green */
+    --success-light: #dcfce7;
+    --danger: #dc2626;        /* Alert / Delete Red */
+    --danger-light: #fee2e2;
+    --warning: #ca8a04;       /* Warning / Edit Yellow */
+    --warning-light: #fef9c3;
+    
+    --border-radius: 12px;
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+    --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.resource-header h1{
-
-font-size:40px;
-
-color:#1E3A8A;
-
-margin-bottom:10px;
-
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.resource-header p{
-
-color:#666;
-
-font-size:18px;
-
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-main);
+    line-height: 1.6;
+    padding-bottom: 60px; /* Space for sticky footer */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-.resource-form{
-
-width:60%;
-
-margin:auto;
-
-background:white;
-
-padding:35px;
-
-border-radius:15px;
-
-box-shadow:0 5px 15px rgba(0,0,0,.08);
-
-margin-bottom:50px;
-
+/* ==========================================================================
+   2. Navigation Bar
+   ========================================================================== */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--bg-card);
+    padding: 1.25rem 5%;
+    box-shadow: var(--shadow-sm);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(8px);
+    background: rgba(255, 255, 255, 0.9);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-.resource-form h2{
-
-text-align:center;
-
-margin-bottom:25px;
-
+.logo {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
-.resource-table{
-
-padding:0 8% 60px;
-
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
 }
 
-.resource-table table{
-
-width:100%;
-
-border-collapse:collapse;
-
-background:white;
-
-box-shadow:0 5px 15px rgba(0,0,0,.08);
-
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-weight: 500;
+    font-size: 0.95rem;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: var(--transition);
 }
 
-.resource-table th{
-
-background:#2563EB;
-
-color:white;
-
-padding:15px;
-
+/* Highlight active page or hover state */
+.nav-links a:hover, 
+.nav-links a[href="/resources"] {
+    color: var(--primary);
+    background-color: rgba(2, 132, 199, 0.08);
 }
 
-.resource-table td{
-
-padding:15px;
-
-text-align:center;
-
-border-bottom:1px solid #ddd;
-
+/* ==========================================================================
+   3. Header Section
+   ========================================================================== */
+.resource-header {
+    max-width: 1200px;
+    width: 90%;
+    margin: 2.5rem auto 1.5rem auto;
+    text-align: left;
 }
 
-.available{
-
-background:#DCFCE7;
-
-color:#15803D;
-
-padding:8px 15px;
-
-border-radius:20px;
-
-font-weight:600;
-
+.resource-header h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 0.5rem;
+    position: relative;
+    display: inline-block;
 }
 
-.edit-btn{
-
-background:#F59E0B;
-
-border:none;
-
-padding:8px 15px;
-
-color:white;
-
-border-radius:6px;
-
-cursor:pointer;
-
-margin-right:5px;
-
+.resource-header h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50%;
+    height: 4px;
+    background: var(--primary);
+    border-radius: 2px;
 }
 
-.delete-btn{
-
-background:#DC2626;
-
-border:none;
-
-padding:8px 15px;
-
-color:white;
-
-border-radius:6px;
-
-cursor:pointer;
-
+.resource-header p {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    margin-top: 0.5rem;
 }
 
-.edit-btn:hover{
-
-background:#D97706;
-
+/* ==========================================================================
+   4. Interactive Form Section
+   ========================================================================== */
+.resource-form {
+    background: var(--bg-card);
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto 2rem auto;
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+    border: 1px solid rgba(0, 0, 0, 0.03);
 }
 
-.delete-btn:hover{
+.resource-form h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    color: var(--text-main);
+}
 
-background:#B91C1C;
+.resource-form form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    align-items: flex-end;
+}
 
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.form-group input, 
+.form-group select {
+    padding: 0.75rem 1rem;
+    font-family: inherit;
+    font-size: 0.95rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    background-color: #fff;
+    color: var(--text-main);
+    transition: var(--transition);
+    outline: none;
+}
+
+/* Form Interactivity focus states */
+.form-group input:focus, 
+.form-group select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+}
+
+.submit-btn {
+    background-color: var(--primary);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 4px 6px -1px rgba(2, 132, 199, 0.2);
+    height: 48px; /* Match standard field heights */
+}
+
+.submit-btn:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(2, 132, 199, 0.3);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+/* ==========================================================================
+   5. Elegant Data Table Section
+   ========================================================================== */
+.resource-table {
+    background: var(--bg-card);
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto 3rem auto;
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+}
+
+.resource-table h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+/* Responsive Table Wrapper */
+@media (max-width: 768px) {
+    .resource-table {
+        overflow-x: auto;
+        padding: 1rem;
+    }
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.95rem;
+}
+
+th {
+    background-color: #f8fafc;
+    color: var(--text-muted);
+    font-weight: 600;
+    padding: 1rem;
+    border-bottom: 2px solid #edf2f7;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+}
+
+td {
+    padding: 1rem;
+    border-bottom: 1px solid #edf2f7;
+    color: var(--text-main);
+    transition: var(--transition);
+}
+
+/* Hover effect on rows */
+tr:hover td {
+    background-color: #f8fafc;
+}
+
+/* Status Badges */
+.available {
+    background-color: var(--success-light);
+    color: var(--success);
+    padding: 0.25rem 0.75rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: inline-block;
+}
+
+/* Action Buttons Grid */
+td:last-child {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.edit-btn, 
+.delete-btn {
+    padding: 0.4rem 0.9rem;
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 0.85rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.edit-btn {
+    background-color: var(--warning-light);
+    color: var(--warning);
+}
+
+.edit-btn:hover {
+    background-color: var(--warning);
+    color: white;
+    transform: translateY(-1px);
+}
+
+.delete-btn {
+    background-color: var(--danger-light);
+    color: var(--danger);
+}
+
+.delete-btn:hover {
+    background-color: var(--danger);
+    color: white;
+    transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   6. Footer
+   ========================================================================== */
+footer {
+    margin-top: auto;
+    background-color: var(--bg-card);
+    text-align: center;
+    padding: 1.5rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    width: 100%;
 }
