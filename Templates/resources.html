@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Resources Management</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+</head>
+
+<body>
+
+<nav class="navbar">
+
+    <div class="logo">
+        🌍 Disaster Recovery Assistant
+    </div>
+
+    <ul class="nav-links">
+
+        <li><a href="/">Home</a></li>
+        <li><a href="/report">Report</a></li>
+        <li><a href="/dashboard">Dashboard</a></li>
+        <li><a href="/resources">Resources</a></li>
+        <li><a href="/shelters">Shelters</a></li>
+
+    </ul>
+
+</nav>
+
+
+<section class="resource-header">
+
+<h1>Resource Management</h1>
+
+<p>
+
+Manage food, medicines, water and other emergency supplies.
+
+</p>
+
+</section>
+
+
+<section class="resource-form">
+
+<h2>Add New Resource</h2>
+
+<form>
+
+<div class="form-group">
+
+<label>Resource Name</label>
+
+<input
+type="text"
+placeholder="Enter resource name">
+
+</div>
+
+<div class="form-group">
+
+<label>Category</label>
+
+<select>
+
+<option>Food</option>
+
+<option>Water</option>
+
+<option>Medicine</option>
+
+<option>Clothing</option>
+
+<option>Medical Equipment</option>
+
+<option>Other</option>
+
+</select>
+
+</div>
+
+<div class="form-group">
+
+<label>Quantity</label>
+
+<input
+type="number"
+placeholder="Enter quantity">
+
+</div>
+
+<button class="submit-btn">
+
+Add Resource
+
+</button>
+
+</form>
+
+</section>
+
+
+
+<section class="resource-table">
+
+<h2>Available Resources</h2>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>ID</th>
+
+<th>Resource</th>
+
+<th>Category</th>
+
+<th>Quantity</th>
+
+<th>Status</th>
+
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td>1</td>
+
+<td>Drinking Water</td>
+
+<td>Water</td>
+
+<td>250</td>
+
+<td><span class="available">Available</span></td>
+
+<td>
+
+<button class="edit-btn">Edit</button>
+
+<button class="delete-btn">Delete</button>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>2</td>
+
+<td>Medical Kit</td>
+
+<td>Medicine</td>
+
+<td>120</td>
+
+<td><span class="available">Available</span></td>
+
+<td>
+
+<button class="edit-btn">Edit</button>
+
+<button class="delete-btn">Delete</button>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</section>
+
+
+<footer>
+
+<p>
+
+© 2026 Disaster Recovery Assistant
+
+</p>
+
+</footer>
+
+</body>
+
+</html>
